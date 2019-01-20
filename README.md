@@ -6,6 +6,10 @@ This is a small example of using an openID provider to add authentication to you
 
 It's using [Passport](https://www.npmjs.com/package/passport), and it's implemented on the frontend using [Vue.js](https://github.com/vuejs/vue), but any framework would work - accessing a single api point is all that needs to be done to check user logged-in status and retrieve data.
 
+It uses the Vuex store to maintain user information that can be cross-referenced for use on the frontend.
+
+If you have any questions, feel free to reach out to `g3ddylee @ gmail . com`.
+
 ## Project setup
 ```
 npm install
