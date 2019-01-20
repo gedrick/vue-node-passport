@@ -5,7 +5,12 @@ const passport = require('passport');
 const twitchStrategy = require('passport-twitch').Strategy;
 const bodyParser = require('body-parser');
 
-const settings = require('./server/settings');
+let settings;
+if (process.env.NODE_ENV === 'production') {
+  settings = require('./server/settings.env');
+} else {
+  settings = require('./server/settings');
+}
 const host = process.env.HOST || 'http://localhost:8080';
 
 // Set up Mongo.
@@ -13,8 +18,6 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 require('./server/db')(mongoose);
 const User = require('./server/models/user.js');
-
-
 
 /**
  * Setup for Login with Twitch.
@@ -108,8 +111,6 @@ server.get('/auth/callback', passport.authenticate('twitch', {
   res.redirect(`${host}/#/dashboard`);
 });
 server.get('/logout', (req, res) => {
-  console.log('logout hit');
-
   req.logout();
   res.redirect(`${host}/#/`);
 })
