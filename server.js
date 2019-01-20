@@ -5,15 +5,15 @@ const passport = require('passport');
 const twitchStrategy = require('passport-twitch').Strategy;
 const bodyParser = require('body-parser');
 
+const isProd = process.env.NODE_ENV === 'production'
+
 let settings;
 console.log(`Starting ${process.env.NODE_ENV} server.`);
-if (process.env.NODE_ENV === 'production') {
+if (isProd) {
   console.log('it is indeed production');
-
   settings = require('./server/settings.env');
 } else {
   console.log('not getting registered as prod');
-
   settings = require('./server/settings.env');
 }
 const host = process.env.HOST || 'http://localhost:8080';
@@ -40,7 +40,11 @@ server.use(session({
   saveUninitialized: false,
   store: new MongoStore(settings.mongo)
 }));
-server.use(express.static('./public'));
+if (isProd) {
+  server.use(express.static('./dist'));
+} else {
+  server.use(express.static('./public'));
+}
 server.use(passport.initialize());
 server.use(passport.session());
 
