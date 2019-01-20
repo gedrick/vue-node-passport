@@ -8,9 +8,13 @@ const bodyParser = require('body-parser');
 let settings;
 console.log(`Starting ${process.env.NODE_ENV} server.`);
 if (process.env.NODE_ENV === 'production') {
+  console.log('it is indeed production');
+
   settings = require('./server/settings.env');
 } else {
-  settings = require('./server/settings');
+  console.log('not getting registered as prod');
+
+  settings = require('./server/settings.env');
 }
 const host = process.env.HOST || 'http://localhost:8080';
 
