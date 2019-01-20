@@ -1,0 +1,28 @@
+// create an app here: https://glass.twitch.tv/console/apps
+const twitch = {
+  clientId: '[yourClientID]',
+  secret: '[yourSecret]',
+  scopes: ['user_read'] // add more scopes to array if needed
+};
+
+const login = {
+  sessionSecret: '[someSecret]',  // make something up
+  encryptionSalt: '[someSaltString]', // make something up again
+  callback: 'http://localhost:3000/auth/callback'
+};
+
+const mongo = {
+  host: '[database host]',
+  db: '[your mongo database name]',
+  username: '[mongo user name]',
+  password: '[mongo user password',
+  url: `[your mongo url w/ username/pw]`, // mongodb://<user>:<password>@<host>:<port>/<database>
+  collection: '[your mongo collection name]', // usually `sessions`
+  port: 57544, // optional, default: 27017
+};
+
+module.exports = {
+  twitch,
+  login,
+  mongo
+};

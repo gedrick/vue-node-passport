@@ -1,25 +1,45 @@
+import store from './store';
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Login from './views/Login.vue'
+import Dashboard from './views/Dashboard.vue'
 
 Vue.use(Router)
 
+const checkAuthenticated = (to, from, next) => {
+  store.dispatch('getMe').then(() => {
+    if (store.getters.isLoggedIn) {
+      next();
+      return;
+    }
+    next({ path: '/' });
+  });
+}
+
+// const checkNotAuthenticated = (to, from, next) => {
+//   store.dispatch('getMe').then(() => {
+//     if (!store.getters.isLoggedIn) {
+//       next();
+//       return;
+//     }
+//     next({ path: '/dashboard' });
+//   });
+// }
+
+// Use beforeEnter to implement checks.
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'login',
+      component: Login
+      // beforeEnter: checkNotAuthenticated
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: function () { 
-        return import(/* webpackChunkName: "about" */ './views/About.vue')
-      }
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
+      beforeEnter: checkAuthenticated
     }
   ]
 })
