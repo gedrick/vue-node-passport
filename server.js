@@ -6,6 +6,7 @@ const twitchStrategy = require('passport-twitch').Strategy;
 const bodyParser = require('body-parser');
 
 let settings;
+console.log(`Starting ${process.env.NODE_ENV} server.`);
 if (process.env.NODE_ENV === 'production') {
   settings = require('./server/settings.env');
 } else {
