@@ -8,7 +8,7 @@ const twitch = {
 const login = {
   sessionSecret: '[someSecret]',  // make something up
   encryptionSalt: '[someSaltString]', // make something up again
-  callback: 'http://localhost:3000/auth/callback'
+  callback: 'http://localhost:3000/auth/callback' // add this to your Twitch application callback URL
 };
 
 const mongo = {
