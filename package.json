@@ -11,7 +11,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run build && node server"
+    "start": "node server"
   },
   "dependencies": {
     "axios": "^0.18.0",
