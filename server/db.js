@@ -1,6 +1,6 @@
 let settings;
 if (process.env.NODE_ENV === 'production') {
-  settings = require('./settings.env');
+  settings = require('./settings.prod');
 } else {
   settings = require('./settings');
 }

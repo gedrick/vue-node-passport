@@ -9,7 +9,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 let settings;
 if (isProd) {
-  settings = require('./server/settings.env');
+  settings = require('./server/settings.prod');
 } else {
   settings = require('./server/settings');
 }
