@@ -4,6 +4,8 @@
 
 This is a small example of using an openID provider to add authentication to your  applications. I had a ton of trouble understanding the Passport workflow so hopefully this helps.
 
+Try it out [here](https://vue-node-passport.herokuapp.com)!
+
 It's using [Passport](https://www.npmjs.com/package/passport), and it's implemented on the frontend using [Vue.js](https://github.com/vuejs/vue), but any framework would work - accessing a single api point is all that needs to be done to check user logged-in status and retrieve data.
 
 # Setup
