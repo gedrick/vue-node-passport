@@ -5,16 +5,13 @@ const passport = require('passport');
 const twitchStrategy = require('passport-twitch').Strategy;
 const bodyParser = require('body-parser');
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 let settings;
-console.log(`Starting ${process.env.NODE_ENV} server.`);
 if (isProd) {
-  console.log('it is indeed production');
   settings = require('./server/settings.env');
 } else {
-  console.log('not getting registered as prod');
-  settings = require('./server/settings.env');
+  settings = require('./server/settings');
 }
 const host = process.env.HOST || 'http://localhost:8080';
 
@@ -122,7 +119,7 @@ server.get('/auth/callback', passport.authenticate('twitch', {
 server.get('/logout', (req, res) => {
   req.logout();
   res.redirect(`${host}/#/`);
-})
+});
 
 const lockedRoutes = express.Router();
 lockedRoutes.use(loginRequiredCheck);

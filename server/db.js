@@ -1,4 +1,9 @@
-const settings = require('./settings.js');
+let settings;
+if (process.env.NODE_ENV === 'production') {
+  settings = require('./settings.env');
+} else {
+  settings = require('./settings');
+}
 
 const db = mongoose => {
   mongoose.connect(
