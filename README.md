@@ -35,4 +35,4 @@ You'll need to change the Passport strategy. [Just about every service](http://w
 
 # I have more questions!
 
-I'd love to help - hit me up on [Twitter](https://twitter.com/nostalgiatriggr) or leave an issue on Github.
+I'd love to help - UPDATE: I don't have social media anymore, so just leave an issue here on Github.
