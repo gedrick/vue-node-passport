@@ -19,7 +19,7 @@
     "connect-mongo": "^2.0.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "mongoose": "^5.4.5",
+    "mongoose": "^5.7.5",
     "mongoose-findorcreate": "^3.0.0",
     "passport": "^0.4.0",
     "passport-twitch": "^1.0.3",
